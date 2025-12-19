@@ -3,14 +3,13 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="com.sri.demo.com.sri.demo.NewTest">
+      <class name="com.sri.demo.com.sri.demo.LearnApi">
         <methods>
-          <include name="beforeMethod"/>
-          <include name="login"/>
-          <include name="HomePageTitle"/>
-          <include name="afterMethod"/>
+          <include name="beforeClass"/>
+          <include name="postAPI"/>
+          <include name="afterClass"/>
         </methods>
-      </class> <!-- com.sri.demo.com.sri.demo.NewTest -->
+      </class> <!-- com.sri.demo.com.sri.demo.LearnApi -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->
