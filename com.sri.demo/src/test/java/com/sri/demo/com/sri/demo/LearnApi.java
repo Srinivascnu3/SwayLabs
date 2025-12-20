@@ -14,6 +14,7 @@ import io.restassured.http.Headers;
 import io.restassured.path.json.JsonPath;
 import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
+import pojo.ActivitiesPojo;
 
 
 public class LearnApi {
@@ -33,7 +34,7 @@ public class LearnApi {
 		System.out.println("Content-Type value: " + contentType);
 
 		int status = response.getStatusCode();
-		System.out.println("status code:" + status);
+		System.out.println("get status code:" + status);
 		Assert.assertEquals(200, status);
 		
 		// Get all the headers, return value is of type Headers.
@@ -110,8 +111,21 @@ public class LearnApi {
 		//delete id 30 for testing
 		response = req.delete("/api/v1/Activities/30");
 		int statusCode = response.getStatusCode();
-		System.out.println("Status code: "+ statusCode);
+		System.out.println("delete Status code: "+ statusCode);
 		
+	}
+	@Test(priority=0)
+	public void putApi() {
+		RestAssured.baseURI = infyBase; // use base host and post to the explicit path
+		RequestSpecification req = RestAssured.given();
+		req.header("Content-Type", "application/json");
+		//{id=1, title=Activity 1, dueDate=2025-12-19T04:20:55.4373722+00:00, completed=false}
+		ActivitiesPojo pojo = new ActivitiesPojo(1,"Activity Srini","2025-12-19T04:20:55.4373722+00:00",true);
+		req.body(pojo);
+		response = req.put("/api/v1/Activities/1");
+		int status = response.getStatusCode();
+		Assert.assertEquals(200, status);
+		System.out.println("put status code: "+status);
 	}
   @BeforeClass
   public void beforeClass() {

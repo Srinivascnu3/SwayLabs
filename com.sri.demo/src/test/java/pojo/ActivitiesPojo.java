@@ -5,6 +5,17 @@ public class ActivitiesPojo {
 	 int id;
 	 String title;
 	 String dueDate;
+	 public ActivitiesPojo() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+	 public ActivitiesPojo(int id, String title, String dueDate, Boolean completed) {
+		super();
+		this.id = id;
+		this.title = title;
+		this.dueDate = dueDate;
+		this.completed = completed;
+	}
 	 Boolean completed;
 
 	public int getId() {

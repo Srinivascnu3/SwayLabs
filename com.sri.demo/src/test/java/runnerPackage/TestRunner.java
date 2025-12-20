@@ -1,4 +1,4 @@
-package com.sri.demo.com.sri.demo;
+package runnerPackage;
 
 import io.cucumber.testng.CucumberOptions;
 import io.cucumber.testng.AbstractTestNGCucumberTests;
@@ -7,7 +7,8 @@ import io.cucumber.testng.AbstractTestNGCucumberTests;
 	features = "src/test/resources/features",
 	glue = {"stepdef"},
 	plugin = {"pretty","html:target/cucumber-reports","json:target/cucumber.json"},
-	monochrome = true
+	monochrome = true,
+	publish = true
 )
 public class TestRunner extends AbstractTestNGCucumberTests {
 	

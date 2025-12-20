@@ -1,5 +1,8 @@
 package stepdef;
 
+import java.time.LocalDate;
+
+import org.joda.time.LocalDateTime;
 import org.testng.Assert;
 
 import io.cucumber.java.en.Given;
@@ -10,6 +13,7 @@ import io.restassured.path.json.JsonPath;
 import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
 import pojo.ActivitiesPojo;
+import com.google.gson.Gson;
 
 public class ActivitiesApi {
 	String infyBase = "https://fakerestapi.azurewebsites.net";
@@ -37,11 +41,27 @@ public class ActivitiesApi {
 		System.out.println("title of id 1: "+pojo.getTitle());
 		Assert.assertEquals(pojo.getTitle(), "Activity 1");
 	}
+	@When("Post the Activities details")
+	public void post_the_activities_details() {
+		LocalDateTime l = new LocalDateTime().now();
+		
+		String s = l.toString();
+		pojo = new ActivitiesPojo (31,"Srini activity",s,true);
+		// Serialize POJO to JSON and send with proper Content-Type to avoid 415 Unsupported Media Type
+//		Gson gson = new Gson();
+//		String jsonBody = gson.toJson(pojo);
+//		response = req.contentType("application/json").body(jsonBody).post("/api/v1/Activities");
+		req.header("Content-Type", "application/json");
+		req.body(pojo);
+		response = req.post("/api/v1/Activities");
+		System.out.println(response.getBody().asString());
+	}
 
 	@Then("Validate status code  and status line")
 	public void validate_status_code_and_status_line() {
 		int status=response.getStatusCode();
-		Assert.assertEquals(status, 200);
+		// Accept 200 (OK) or 201 (Created) for POST responses
+		Assert.assertTrue(status == 200 || status == 201, "Expected status 200 or 201 but found " + status);
 		System.out.println(response.getStatusLine());
 	}
 }

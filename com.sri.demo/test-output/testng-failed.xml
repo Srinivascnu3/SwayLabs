@@ -3,13 +3,13 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="com.sri.demo.com.sri.demo.LearnApi">
+      <class name="runnerPackage.TestRunner">
         <methods>
-          <include name="beforeClass"/>
-          <include name="postAPI"/>
-          <include name="afterClass"/>
+          <include name="setUpClass"/>
+          <include name="tearDownClass"/>
+          <include name="runScenario" invocation-numbers="1"/>
         </methods>
-      </class> <!-- com.sri.demo.com.sri.demo.LearnApi -->
+      </class> <!-- runnerPackage.TestRunner -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->
