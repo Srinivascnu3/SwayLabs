@@ -54,13 +54,29 @@ public class ActivitiesApi {
 		req.header("Content-Type", "application/json");
 		req.body(pojo);
 		response = req.post("/api/v1/Activities");
-		System.out.println(response.getBody().asString());
+		System.out.println("Post response check: "+response.getBody().asString());
 	}
 
+	@When("Put the Activities details")
+	public void put_the_activities_details() {
+		LocalDateTime l = new LocalDateTime().now();
+		String s = l.toString();
+		ActivitiesPojo pojo = new ActivitiesPojo(1,"Activity Srini","2025-12-19T04:20:55.4373722+00:00",true);
+		req.header("Content-Type", "application/json");
+		req.body(pojo);
+		response = req.put("/api/v1/Activities/1");
+		System.out.println("put response check: "+response.getBody().asString());
+	}
+	@When("Del the {string} Activities details")
+	public void del_the_activities_details(String id) {
+		 
+		response = req.delete("/api/v1/Activities/"+id);
+		
+	}
 	@Then("Validate status code  and status line")
 	public void validate_status_code_and_status_line() {
 		int status=response.getStatusCode();
-		// Accept 200 (OK) or 201 (Created) for POST responses
+		//Accept 200 (OK) or 201 (Created) for POST responses
 		Assert.assertTrue(status == 200 || status == 201, "Expected status 200 or 201 but found " + status);
 		System.out.println(response.getStatusLine());
 	}
