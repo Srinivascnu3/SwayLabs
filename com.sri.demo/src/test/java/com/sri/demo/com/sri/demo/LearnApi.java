@@ -100,9 +100,18 @@ public class LearnApi {
 		} else {
 			System.out.println("POST failed - check request body and API contract");
 		}
-		
-		
 
+	}
+	
+	@Test(priority=3)
+	public void delApi() {
+		RestAssured.baseURI = infyBase; // use base host and post to the explicit path
+		RequestSpecification req = RestAssured.given();
+		//delete id 30 for testing
+		response = req.delete("/api/v1/Activities/30");
+		int statusCode = response.getStatusCode();
+		System.out.println("Status code: "+ statusCode);
+		
 	}
   @BeforeClass
   public void beforeClass() {
