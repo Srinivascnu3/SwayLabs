@@ -4,5 +4,8 @@
     <theme>dark</theme>
     <documentTitle>API Automation Report</documentTitle>
     <reportName>Rest Assured + Cucumber Report</reportName>
+    <encoding>utf-8</encoding>
+    <protocol>https</protocol>
+    <offline>true</offline>
   </configuration>
 </extentreports>

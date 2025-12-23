@@ -38,6 +38,7 @@ public class ActivitiesApi extends BaseTest  {
 		response = getRequest().get("/api/v1/Activities/"+id);
 		//try using jsonPath
 		jp = response.jsonPath();
+	
 		System.out.println("title of id : "+jp.get("title"));
 		Assert.assertEquals(jp.getString("title"),title );
 		
