@@ -99,6 +99,8 @@
 						<includes>
 							<include>**/*Runner*.java</include>
 						</includes>
+						<!-- Retry failed tests -->
+						<rerunFailingTestsCount>2</rerunFailingTestsCount>
 					</configuration>
 				</plugin>
 

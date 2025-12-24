@@ -82,6 +82,9 @@ public class ActivitiesApi extends BaseTest  {
 	public void del_the_activities_details(String id) {
 		 
 		response = getRequest().delete("/api/v1/Activities/"+id);
+		System.out.println("Delete response check: "+response.getBody().asString());
+		Assert.assertTrue(false);
+		
 		
 	}
 	@Then("Validate status code  and status line")

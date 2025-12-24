@@ -15,7 +15,6 @@ public class BaseTest {
 
         request.set(RestAssured.given()
                 .header("Content-Type", "application/json"));
-
         apiLogs.set(new StringBuilder());
     }
 
