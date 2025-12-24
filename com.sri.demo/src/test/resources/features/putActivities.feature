@@ -1,4 +1,5 @@
 Feature: Put for Activities Details
+  @regression
   Scenario: Put Activities details
     Given A list of Activities are available
     When Put the Activities details 
