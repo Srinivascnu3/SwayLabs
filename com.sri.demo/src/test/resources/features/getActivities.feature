@@ -1,4 +1,5 @@
 Feature: Check for Activities Details
+  @smoke
   Scenario: Get Activities details
     Given A list of Activities are available
     When Get the Activities details of "<id>" and "<title>"
